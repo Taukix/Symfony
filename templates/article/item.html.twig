@@ -1,0 +1,26 @@
+<article class="mb-5">
+    <div class="row" style="background-color: black; width: 1100px; margin-left: 0px; border-radius: 10px;">
+        <div class="col-md-7" style="padding: 0; width: 562px; height: 315px; border-right: 2px solid white;">
+            {% if article.featuredImage %}
+                <a href="{{ path('article_show', { 'slug': article.slug }) }}">
+                    <img src="/uploads/{{ article.featuredImage.filename }}" alt="{{  article.featuredImage.altText }}" loading="lazy" width="560px" height="315px">
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="col-md-4" style="margin: auto; border-left: 1px solid white">
+            <h2>
+                <a class="text-decoration-none" href="{{ path('article_show', { 'slug': article.slug}) }}">{{ article.title }}</a>
+            </h2>
+
+            <hr style="color: darkgray">
+
+            <p style="color: white">
+                {{ article.createdAt|date('d M Y') }}
+            </p>
+            <p style="color: white">
+                {{ article.featuredText ?: article.content|striptags|slice(0, 130) ~ '...' }}
+            </p>
+        </div>
+    </div>
+</article>
