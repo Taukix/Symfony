@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="mt-5">
+            <h1 style="text-align: left; display: inline-block">{{ article.title }}</h1>
+        </div>
+
+        <hr>
+
+        {{ article.content|raw }}
+
+        <hr>
+
+        <div class="col-md-{{ leftCol ?? 5 }}">
+            {% if article.featuredImage %}
+                <a href="{{ path('article_show', { 'slug': article.slug }) }}">
+                        <img src="/uploads/{{ article.featuredImage.filename }}" alt="{{  article.featuredImage.altText }}" loading="lazy" width="560px" height="315y">
+                </a>
+            {% endif %}
+        </div>
+
+        <h2 class="comment-title mt-5">
+            <span class="comment-count">{{ article.comments|length }}</span> comment(s)
+        </h2>
+
+        <hr>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="comment-area mb-5">
+                {{  form(commentForm, { 'attr': { 'class': 'comment-form' } }) }}
+            </div>
+            <hr>
+        {% endif %}
+
+
+        <div class="comment-list">
+            {% for comment in comments %}
+                {% include 'comment/index.html.twig' with [comments] %}
+            {% endfor %}
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center">
+            {{ knp_pagination_render(comments) }}
+        </div>
+
+    </div>
+{% endblock %}

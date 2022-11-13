@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register!{% endblock %}
+
+{% block main %}
+    <!-- Section: Design Block -->
+    <section class="text-center text-lg-start">
+        <style>
+            .cascading-right {
+                margin-right: -50px;
+            }
+
+            @media (max-width: 991.98px) {
+                .cascading-right {
+                    margin-right: 0;
+                }
+            }
+
+            .w-100 {
+                max-height: 820px;
+            }
+
+            .form-check-input {
+                margin-left: 30px;
+            }
+
+            .form-control {
+                margin: 10px 0 30px 0
+            }
+
+            .btn {
+                margin-top: 30px;
+            }
+        </style>
+
+        <!-- Jumbotron -->
+        <div class="container py-4">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card cascading-right" style="
+                background: hsla(0, 0%, 100%, 0.55);
+                backdrop-filter: blur(30px);
+                ">
+                        <div class="card-body p-5 shadow-5 text-center">
+                            <h2 class="fw-bold mb-5">Sign up now</h2>
+                            {{ form_start(registrationForm) }}
+                            {{ form_row(registrationForm.name, {'label' : "Name", 'attr': {'class': 'form-control form-control-lg'}}) }}
+                            {{ form_row(registrationForm.firstName, {'label' : "Firstname", 'attr': {'class': 'form-control form-control-lg'}}) }}
+                            {{ form_row(registrationForm.username, {'label' : "Username", 'attr': {'class': 'form-control form-control-lg'}}) }}
+                            {{ form_row(registrationForm.plainPassword) }}
+
+                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+
+                            {% for message in app.flashes('success') %}
+                                <div class="flash-notice">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+                            {{ form_end(registrationForm) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="https://assets-global.website-files.com/605b56f5941891738ce838c2/6245b697e9a405b15d02419c_rocketmobile.png"
+                         class="w-100 rounded-4 shadow-4"
+                         alt=""/>
+                </div>
+            </div>
+        </div>
+        <!-- Jumbotron -->
+    </section>
+    <!-- Section: Design Block -->
+{% endblock %}

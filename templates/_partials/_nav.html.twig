@@ -14,14 +14,28 @@
                 </li>
             </ul>
             <span class="navbar-text" style="margin-left: auto;">
-                    <ul class="navbar-nav">
+                    {% if app.user %}
+                        <ul class="navbar-nav" style="margin-top: 10px;">
+                            <li class="nav-item">
+                                <p class="nav-link" style="color: white; padding-right: 10px; border-right: 1px solid white">{{ app.user.username|capitalize }}</p>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_profile', { username: app.user.username }) }}">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_logout') }}">Log Out</a>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Log In</a>
+                            <a class="nav-link" href="{{ path('app_login') }}">Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sign up</a>
+                            <a class="nav-link" href="{{ path('app_register') }}">Sign up</a>
                         </li>
                     </ul>
+                    {% endif %}
             </span>
         </div>
     </div>
