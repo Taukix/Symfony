@@ -44,6 +44,9 @@ class Article implements TimestampedInterface
     #[ORM\ManyToOne]
     private ?Media $featuredImage = null;
 
+    #[ORM\ManyToOne]
+    private ?Video $featuredVideo = null;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -199,5 +202,17 @@ class Article implements TimestampedInterface
     public function __toString(): string
     {
         return $this->title;
+    }
+
+    public function getFeaturedVideo(): ?Video
+    {
+        return $this->featuredVideo;
+    }
+
+    public function setFeaturedVideo(?Video $featuredVideo): self
+    {
+        $this->featuredVideo = $featuredVideo;
+
+        return $this;
     }
 }

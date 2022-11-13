@@ -15,9 +15,13 @@
         <hr>
 
         <div class="col-md-{{ leftCol ?? 5 }}">
-            {% if article.featuredImage %}
+            {% if article.featuredImage or article.featuredVideo %}
                 <a href="{{ path('article_show', { 'slug': article.slug }) }}">
+                    {% if article.featuredVideo %}
+                        {{ article.featuredVideo.filenamevideo|raw }}
+                    {% else %}
                         <img src="/uploads/{{ article.featuredImage.filename }}" alt="{{  article.featuredImage.altText }}" loading="lazy" width="560px" height="315y">
+                    {% endif %}
                 </a>
             {% endif %}
         </div>

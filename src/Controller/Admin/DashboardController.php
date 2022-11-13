@@ -54,6 +54,11 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Media Library', 'fas fa-photo-video', Media::class),
                 MenuItem::linkToCrud('Add', 'fas fa-plus', Media::class)->setAction(Crud::PAGE_NEW),
             ]);
+
+            yield MenuItem::subMenu('Video', 'fas fa-video')->setSubItems([
+                MenuItem::linkToCrud('Video Library', 'fas fa-video', Video::class),
+                MenuItem::linkToCrud('Add', 'fas fa-plus', Video::class)->setAction(Crud::PAGE_NEW),
+            ]);
         }
 
         if ($this->isGranted('ROLE_ADMIN')) {
