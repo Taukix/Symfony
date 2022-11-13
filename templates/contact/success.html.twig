@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Success!{% endblock %}
+
+{% block main %}
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 text-black" style="border: 2px;">
+                    <div class="card-body p-5 shadow-5 text-center" style="margin-top: 300px;">
+                        <h2>
+                            Message sent with address : {{ message.email }}
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-sm-6 px-0 d-none d-sm-block">
+                    <img src="https://pbs.twimg.com/amplify_video_thumb/1354153207094775808/img/-jYvKmhfxwWC8QXP.jpg"
+                         alt="Login image" class="w-100 vh-100"
+                         style="object-fit: cover; object-position: left; max-height: 930px; border-left: 5px ridge black;">
+                </div>
+            </div>
+        </div>
+
+        <style>.d-flex {
+                height: 700px;
+                width: 500px;
+            }
+
+            .vh-100 {
+                max-height: 873px;
+            }
+
+            .px-5 {
+                margin: 40px 0 0 20px;
+            }
+
+            .card-body {
+                width: 500px;
+                margin: 100px 0 0 200px;
+            }
+        </style>
+    </section>
+{% endblock main %}

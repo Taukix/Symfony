@@ -60,6 +60,8 @@ class DashboardController extends AbstractDashboardController
             yield MenuItem::linkToCrud('Comments', 'fas fa-comment', Comment::class);
 
             yield MenuItem::linkToCrud('Accounts', 'fas fa-user', User::class);
+
+            yield MenuItem::linkToCrud('Contact messages', 'fas fa-message', Message::class);
         }
     }
 }
